@@ -12,7 +12,7 @@ templateSettings =
     "header":
     {
         "show": "true",
-        "logo": "up_arrow.png",
+        "logo": "logo.png",
         "align": { "id": "CENTER", "value": "center" }
     },
     "footer":
@@ -20,7 +20,8 @@ templateSettings =
          "show": "true",
          "type": { "id": "Text", "value": "text" },
          "image":"title.png",
-         "text": "<span id='text' style='z-index:3; font-family: Open Sans, sans-serif;color: #fff;'>Swipe up to make it rain and get a discount.</span>",
+         "text": "<span id='text' style='z-index:3; font-family: Open Sans, sans-serif;color: #000;'>Swipe up to make it rain and get a discount.</span>",
+
          "align": { "id": "CENTER", "value": "center" },
          "size": { "id": "Normal", "value": "0.8em" }
     },
