@@ -103,7 +103,9 @@ function Swiper(settings) {
 
     }
 
-    function updateText()
+    function updateText() {
+        
+    }
 
     function preloadBigImages() {
         var distinct = {};
