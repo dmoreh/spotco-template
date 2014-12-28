@@ -21,18 +21,17 @@ templateSettings =
          "type": { "id": "Text", "value": "text" },
          "image":"title.png",
          "text": "<span id='text' style='z-index:3; font-family: Open Sans, sans-serif;color: #000;'>Swipe up to make it rain and get a discount.</span>",
-
          "align": { "id": "CENTER", "value": "center" },
          "size": { "id": "Normal", "value": "0.8em" }
     },
     "content": {
         "show": "true",
-        "image":"cat.png"
+        "image":"dollar.png"
     },
     "customization":
     {
         "swipe_value": 1,
-        "max_discount": 10
+        "max_discount": 2
     }
 
 };
