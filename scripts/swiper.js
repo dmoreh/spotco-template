@@ -14,7 +14,7 @@ function Swiper(settings) {
         gameContainer = settings.container,
         stylesAmount, imagesForPreload = [],
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
-        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{display: table; height: 80%; width: 100%;}#cont-box > div{height: 100%; width: 100%; display: table-cell; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}#image img{width: 50%; max-width: 300px; max-height: 300px;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}' + addBackground(settings.background),
+        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{display: table; height: 80%; width: 100%;}#cont-box > div{height: 100%; width: 100%; display: table-cell; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}#image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}' + addBackground(settings.background),
         html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '<img src="' + basePath + 'images/button.png" id="btn"/></div> </div>' + setFooter(settings.footer);
         
         
@@ -80,9 +80,31 @@ function Swiper(settings) {
 
     thisgame.play = function () {
         mainWrapper.className = "";
-        gameContainer.addEventListener(touchStartEvent, sendEngage, false);
-        btn = gameContainer.querySelector('#btn');
-        btn.addEventListener(touchEndEvent, requestRedirect, false);
+        console.log("woot");
+        var start,
+            direction = 0;
+
+        $('#image').on(touchStartEvent, function(event) {
+            start = event.originalEvent.touches[0].pageY;
+        });
+        $('#image').on(touchMoveEvent, function(event) {
+            direction = start - event.originalEvent.touches[0].pageY;
+        });
+        $('#image').on(touchEndEvent, function(event) {
+            if (direction > 0 ) {
+                //animate
+                animateSwipe();
+            }
+        });
+    }
+
+    function animateSwipe() {
+        updateText();
+
+    }
+
+    function updateText() {
+        
     }
 
     function preloadBigImages() {
