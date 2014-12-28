@@ -1,7 +1,7 @@
 templateSettings =
 {
-    "ctor": "ExampleDefault",
-    "scriptSource": "example_default.js",
+    "ctor": "Swiper",
+    "scriptSource": "swiper.js",
     "background":
  {
      "type": { "id": "Image", "value": "image" },
