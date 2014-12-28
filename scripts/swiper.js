@@ -105,8 +105,13 @@ function Swiper(settings) {
         elm.style.fontSize = "25px";
         
         if (counter == max_discount) {
+
             document.getElementById("logo").className = "hide";
             document.getElementById("text").innerHTML = counter + "% off! Aw yeah get dat money.\n";
+            setTimeout(function() {
+                requestWinFrame('http://www.google.com');
+            }, 3000);
+            
         }
     }
 
