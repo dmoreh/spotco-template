@@ -3,12 +3,12 @@ templateSettings =
     "ctor": "Swiper",
     "scriptSource": "swiper.js",
     "background":
- {
+    {
      "type": { "id": "Image", "value": "image" },
      "image": "bg.jpg",
      "gradiant_start": "#555354",
      "gradiant_end": "#000"
- },
+    },
     "header":
     {
         "show": "true",
@@ -29,6 +29,4 @@ templateSettings =
         "image":"cat.png"
     }
 
-
 };
-
