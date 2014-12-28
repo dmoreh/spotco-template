@@ -17,7 +17,7 @@ function Swiper(settings) {
         swipe_value = settings.customization.swipe_value,
         max_discount = settings.customization.max_discount,
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
-        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{width: 100%; height: 70%;}#cont-box > div{height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
+        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}.hide{visibility: hidden;}#cont-box{width: 100%; height: 70%;}#cont-box > div{height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
         html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '</div> </div>' + setFooter(settings.footer);
     
        
@@ -93,22 +93,20 @@ function Swiper(settings) {
             if (direction > 0 ) {
                 //animate
                 $(this).addClass('slide')
-                animateSwipe();
+                updateText();
             }
         });
     }
 
-    function animateSwipe() {
-        updateText();
-
-    }
-
     function updateText() {
         counter++;
-        document.getElementById("discount").innerHTML = counter + "% off!\n";
-
+        elm = document.getElementById("text")
+        elm.innerHTML = counter + "% off!\n";
+        elm.style.fontSize = "25px";
+        
         if (counter == max_discount) {
-            document.getElementById("instructions").innerHTML = "Yeaaaah! Get dat money.\n";
+            document.getElementById("logo").className = "hide";
+            document.getElementById("text").innerHTML = counter + "% off! Aw yeah get dat money.\n";
         }
     }
 
@@ -215,15 +213,6 @@ function Swiper(settings) {
         return head;
     }
     
-    //add header content depending on settings
-    function setHeader(stats) {
-        var head = '';
-        if (stats.show == 'true') {
-            head = '<div id="logo" style="text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" style="margin:' + calculateMarginFromFreeSpace(0.15, 0.7) + 'px 0"/></div>';
-        }
-        return head;
-    }
-    
     //calculates marging from avaliable space
     function calculateMarginFromFreeSpace(boxHeightInPrecent,contentMaxHeight) {
         var allAviHeight = gameContainer.offsetHeight;
@@ -241,7 +230,7 @@ function Swiper(settings) {
                 footer = '<div id="footer" style="text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" /></div>';
             }
             else {
-                footer = '<div id="footer" style="text-align:' + stats.align.value + ';"><div class="font-setter" style="font-size:' + stats.size.value + ';">' + stats.discount_text + stats.instructions_text + '</div></div>';
+                footer = '<div id="footer" style="text-align:' + stats.align.value + ';"><div class="font-setter" style="font-size:' + stats.size.value + ';">' + stats.text + '</div></div>';
             }
         }
         return footer;
