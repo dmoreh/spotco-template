@@ -1,4 +1,4 @@
-function Swiper(settings) {
+function ExternalTemplate(settings) {
     var settings = settings,
         gradientPrefix = getCssValuePrefix('backgroundImage', 'linear-gradient(left, #fff, #fff)'),
         basePath = spotgamesUtils.getScriptPath(),
