@@ -15,13 +15,11 @@ function Swiper(settings) {
         stylesAmount, imagesForPreload = [],
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
         style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{display: table; height: 80%; width: 100%;}#cont-box > div{height: 100%; width: 100%; display: table-cell; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}#image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}' + addBackground(settings.background),
-        html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '<img src="' + basePath + 'images/button.png" id="btn"/></div> </div>' + setFooter(settings.footer);
-        
-        
-       
-       
-
-
+        html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '<img src="' + basePath + 'images/button.png" id="btn"/></div> </div>' + setFooter(settings.footer),
+        counter = 0,
+        swipe_value = settings.customization.swipe_value,
+        max_discount = settings.customization.max_discount;
+    
     if (isMobile) {
         touchStartEvent = "touchstart";
         touchEndEvent = "touchend";
@@ -104,7 +102,12 @@ function Swiper(settings) {
     }
 
     function updateText() {
-        
+        counter++;
+        document.getElementById("discount").innerHTML = counter + "% off!\n";
+
+        if (counter == max_discount) {
+            document.getElementById("instructions").innerHTML = "Yeaaaah! Get dat money.\n";
+        }
     }
 
     function preloadBigImages() {
@@ -236,7 +239,7 @@ function Swiper(settings) {
                 footer = '<div id="footer" style="text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" /></div>';
             }
             else {
-                footer = '<div id="footer" style="text-align:' + stats.align.value + ';"><div class="font-setter" style="font-size:' + stats.size.value + ';">' + stats.text + '</div></div>';
+                footer = '<div id="footer" style="text-align:' + stats.align.value + ';"><div class="font-setter" style="font-size:' + stats.size.value + ';">' + stats.discount_text + stats.instructions_text + '</div></div>';
             }
         }
         return footer;
