@@ -17,7 +17,7 @@ function Swiper(settings) {
         swipe_value = settings.customization.swipe_value,
         max_discount = settings.customization.max_discount,
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
-        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{width: 100%; height: 70%;}#cont-box > div{height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}' + addBackground(settings.background),
+        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{width: 100%; height: 70%;}#cont-box > div{height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
         html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '</div> </div>' + setFooter(settings.footer);
     
        
@@ -256,12 +256,17 @@ function Swiper(settings) {
         }
 
         var images = ''
+
+        images += '<div class="image-last"> <img src="' + basePath + 'images/money-eyes.jpg" /></div>';
+
         console.log(max_discount);
         console.log(swipe_value);
         for (var i = 0; i < (max_discount / swipe_value); i++) {
             images += image;
             console.log(images);
         }
+
+
 
         return images;
     }
