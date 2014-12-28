@@ -20,7 +20,7 @@ templateSettings =
          "show": "true",
          "type": { "id": "Text", "value": "text" },
          "image":"title.png",
-         "text": "<span id='text' style='z-index:3;width:100%; font-family: Open Sans, sans-serif;color: #000;'>Swipe up to make it rain and get a discount.</span>",
+         "text": "<span id='text' style='z-index:3;width:100%; font-family: Open Sans, sans-serif;color: #fff; font-size:30px;'>Swipe up to make it rain and get a discount.</span>",
          "align": { "id": "CENTER", "value": "center" },
          "size": { "id": "Normal", "value": "0.8em" }
     },
