@@ -14,12 +14,13 @@ function Swiper(settings) {
         gameContainer = settings.container,
         stylesAmount, imagesForPreload = [],
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
-        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{display: table; height: 80%; width: 100%;}#cont-box > div{height: 100%; width: 100%; display: table-cell; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}#image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}' + addBackground(settings.background),
-        html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '<img src="' + basePath + 'images/button.png" id="btn"/></div> </div>' + setFooter(settings.footer),
+        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}#main-container.hide{visibility: hidden;}#cont-box{width: 100%; height: 70%;}#cont-box > div{height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}' + addBackground(settings.background),
+        html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '</div> </div>' + setFooter(settings.footer);
         counter = 0,
         swipe_value = settings.customization.swipe_value,
         max_discount = settings.customization.max_discount;
     
+       
     if (isMobile) {
         touchStartEvent = "touchstart";
         touchEndEvent = "touchend";
@@ -82,15 +83,16 @@ function Swiper(settings) {
         var start,
             direction = 0;
 
-        $('#image').on(touchStartEvent, function(event) {
+        $('.image').on(touchStartEvent, function(event) {
             start = event.originalEvent.touches[0].pageY;
         });
-        $('#image').on(touchMoveEvent, function(event) {
+        $('.image').on(touchMoveEvent, function(event) {
             direction = start - event.originalEvent.touches[0].pageY;
         });
-        $('#image').on(touchEndEvent, function(event) {
+        $('.image').on(touchEndEvent, function(event) {
             if (direction > 0 ) {
                 //animate
+                $(this).addClass('slide')
                 animateSwipe();
             }
         });
@@ -250,9 +252,9 @@ function Swiper(settings) {
     function setMainImage(stats) {
         var image = '';
         if (stats.show == 'true') {
-            image = '<div id="image"> <img src="' + basePath + 'images/' + stats.image + '" /></div>';
+            image = '<div class="image"> <img src="' + basePath + 'images/' + stats.image + '" /></div>';
         }
-        return image;
+        return image + image;
     }
 
     function setFooterFontSize() {
