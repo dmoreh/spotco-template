@@ -12,7 +12,7 @@ templateSettings =
     "header":
     {
         "show": "true",
-        "logo": "logo.png",
+        "logo": "up_arrow.png",
         "align": { "id": "CENTER", "value": "center" }
     },
     "footer":
@@ -20,7 +20,7 @@ templateSettings =
          "show": "true",
          "type": { "id": "Text", "value": "text" },
          "image":"title.png",
-         "text": "<span style='font-family: Open Sans, sans-serif;color: #fff;'>Text line Sometimes Comes Here</span>",
+         "text": "<span style='font-family: Open Sans, sans-serif;color: #fff;'>Swipe up to make it rain and get a discount.</span>",
          "align": { "id": "CENTER", "value": "center" },
          "size": { "id": "Normal", "value": "0.8em" }
      },
