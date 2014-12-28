@@ -56,7 +56,7 @@ function ExternalTemplate(settings) {
         swipe_value = settings.customization.swipe_value,
         max_discount = settings.customization.max_discount,
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
-        style = ' body{overflow:hidden;}#main-container{width: 100%; height: 100%; position: absolute; text-align: center;}.hide{visibility: hidden;}#cont-box{z-index: 3; width: 100%; height: 70%;}#cont-box > div{z-index:3; height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{z-index:3; height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ z-index:3; position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -600px;}.image img{width: 51%; margin:-100px;}.hand{position:absolute; bottom: 0px; right: 0;width: 100%; }.hand img {width: 320px;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ z-index:3; position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
+        style = ' body{overflow:hidden;}#main-container{width: 100%; height: 100%; position: absolute; text-align: center;}.hide{visibility: hidden;}#cont-box{z-index: 3; width: 100%; height: 70%;}#cont-box > div{z-index:3; height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{z-index:3; height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ z-index:3; position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -500px;}.image img{width: 51%; margin:-100px;}.hand{position:absolute; bottom: 0px; right: 0;width: 100%; }.hand img {width: 320px;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ z-index:3; position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
         html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '</div> </div><div class="hand"><img src="images/hand1.png"/></div>' + setFooter(settings.footer);
     
        
@@ -141,7 +141,7 @@ function ExternalTemplate(settings) {
         counter++;
         elm = document.getElementById("text")
         elm.innerHTML = counter + "% off!\n";
-        elm.style.fontSize = "25px";
+        elm.style.fontSize = "40px";
         
         if (counter == max_discount) {
 
@@ -271,10 +271,10 @@ function ExternalTemplate(settings) {
         var footer = '';
         if (stats.show == 'true') {
             if (stats.type.value == "image") {
-                footer = '<div id="footer" style="z-index:3;text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" /></div>';
+                footer = '<div id="footer" style="z-index:30;text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" /></div>';
             }
             else {
-                footer = '<div id="footer" style="z-index:3;text-align:' + stats.align.value + ';"><div class="font-setter" style="z-index:3;font-size:' + stats.size.value + ';">' + stats.text + '</div></div>';
+                footer = '<div id="footer" style="z-index:3;position:absolute;width:100%;text-align:' + stats.align.value + ';"><div class="font-setter" style="z-index:3;font-size:' + stats.size.value + ';">' + stats.text + '</div></div>';
             }
         }
         return footer;
