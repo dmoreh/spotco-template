@@ -1,3 +1,42 @@
+var templateSettings =
+{
+    "ctor": "ExternalTemplate",
+    "scriptSource": "global.js",
+    "background":
+    {
+     "type": { "id": "Image", "value": "image" },
+     "image": "bg.jpg",
+     "gradiant_start": "#555354",
+     "gradiant_end": "#000"
+    },
+    "header":
+    {
+        "show": "true",
+        "logo": "up_arrow.png",
+        "align": { "id": "CENTER", "value": "center" }
+    },
+    "footer":
+    {
+         "show": "true",
+         "type": { "id": "Text", "value": "text" },
+         "image":"title.png",
+         "text": "<span id='text' style='z-index:3; font-family: Open Sans, sans-serif;color: #fff;'>Swipe up to make it rain and get a discount.</span>",
+         "align": { "id": "CENTER", "value": "center" },
+         "size": { "id": "Normal", "value": "0.8em" }
+    },
+    "content": {
+        "show": "true",
+        "image":"cat.png"
+    },
+    "customization":
+    {
+        "swipe_value": 1,
+        "max_discount": 10
+    }
+
+};
+
+
 function ExternalTemplate(settings) {
     var settings = settings,
         gradientPrefix = getCssValuePrefix('backgroundImage', 'linear-gradient(left, #fff, #fff)'),
@@ -17,8 +56,8 @@ function ExternalTemplate(settings) {
         swipe_value = settings.customization.swipe_value,
         max_discount = settings.customization.max_discount,
         meta = '<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />',
-        style = ' #main-container{width: 100%; height: 100%; position: absolute; text-align: center;}.hide{visibility: hidden;}#cont-box{width: 100%; height: 70%;}#cont-box > div{height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
-        html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '</div> </div>' + setFooter(settings.footer);
+        style = ' body{overflow:hidden;}#main-container{width: 100%; height: 100%; position: absolute; text-align: center;}.hide{visibility: hidden;}#cont-box{z-index: 3; width: 100%; height: 70%;}#cont-box > div{z-index:3; height: 100%; width: 100%; vertical-align: middle;}#logo{height: 15%;}#logo img, #footer img{max-height: 70%; max-width: 100%; margin: 5% 0;}#footer{z-index:3; height: 5%;}.font-setter{width: 100%; height: 100%;}.image{ z-index:3; position:absolute; width:100%; transition: top 500ms;-webkit-transition: top 500ms; top: 200px;}.image.slide{top: -300px;}.image img{width: 70%;}.hand{background:url(images/hand1.png);position:absolute; top: 70px; left: 0;width: 100%; height: 100%;}#btn{max-height: 100px; max-width: 300px; width: 40%; margin-top: 70px;}.image-last{ z-index:3; position:absolute; width:100%; top: 200px;}.image-last img {width: 50%;}' + addBackground(settings.background),
+        html = setHeader(settings.header) + '<div id="cont-box"> <div>' + setMainImage(settings.content) + '</div> </div><div class="hand"></div>' + setFooter(settings.footer);
     
        
     if (isMobile) {
@@ -232,10 +271,10 @@ function ExternalTemplate(settings) {
         var footer = '';
         if (stats.show == 'true') {
             if (stats.type.value == "image") {
-                footer = '<div id="footer" style="text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" /></div>';
+                footer = '<div id="footer" style="z-index:3;text-align:' + stats.align.value + ';"> <img src="' + basePath + 'images/' + stats.logo + '" /></div>';
             }
             else {
-                footer = '<div id="footer" style="text-align:' + stats.align.value + ';"><div class="font-setter" style="font-size:' + stats.size.value + ';">' + stats.text + '</div></div>';
+                footer = '<div id="footer" style="z-index:3;text-align:' + stats.align.value + ';"><div class="font-setter" style="z-index:3;font-size:' + stats.size.value + ';">' + stats.text + '</div></div>';
             }
         }
         return footer;
